@@ -1,0 +1,61 @@
+aizynthfinder.context package
+=============================
+
+Submodules
+----------
+
+aizynthfinder.context.collection module
+---------------------------------------
+
+.. automodule:: aizynthfinder.context.collection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+aizynthfinder.context.config module
+-----------------------------------
+
+.. automodule:: aizynthfinder.context.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+aizynthfinder.context.cost module
+---------------------------------
+
+.. automodule:: aizynthfinder.context.cost
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+aizynthfinder.context.policy module
+-----------------------------------
+
+.. automodule:: aizynthfinder.context.policy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+aizynthfinder.context.scoring module
+------------------------------------
+
+.. automodule:: aizynthfinder.context.scoring
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+aizynthfinder.context.stock module
+----------------------------------
+
+.. automodule:: aizynthfinder.context.stock
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: aizynthfinder.context
+   :members:
+   :undoc-members:
+   :show-inheritance:

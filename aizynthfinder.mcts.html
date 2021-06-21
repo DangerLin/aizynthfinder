@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aizynthfinder.mcts package &#8212; aizynthfinder 2.6.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aizynthfinder.tools package" href="aizynthfinder.tools.html" />
+    <link rel="prev" title="aizynthfinder.interfaces.gui package" href="aizynthfinder.interfaces.gui.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">aizynthfinder</a></h1>
+
+
+
+<p class="blurb">A fast, robust and flexible software for retrosynthetic planning</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical user interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_interface.html">Python interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scoring.html">Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="aizynthfinder.html">aizynthfinder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="aizynthfinder.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.context.html">aizynthfinder.context package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.interfaces.html">aizynthfinder.interfaces package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">aizynthfinder.mcts package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.mcts.mcts">aizynthfinder.mcts.mcts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.mcts.node">aizynthfinder.mcts.node module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.mcts.state">aizynthfinder.mcts.state module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.mcts">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.tools.html">aizynthfinder.tools package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.training.html">aizynthfinder.training package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.utils.html">aizynthfinder.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.aizynthfinder">aizynthfinder.aizynthfinder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.analysis">aizynthfinder.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.chem">aizynthfinder.chem module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.reactiontree">aizynthfinder.reactiontree module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sequences.html">Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relationships.html">Relationships</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="aizynthfinder.html">aizynthfinder package</a><ul>
+      <li>Previous: <a href="aizynthfinder.interfaces.gui.html" title="previous chapter">aizynthfinder.interfaces.gui package</a></li>
+      <li>Next: <a href="aizynthfinder.tools.html" title="next chapter">aizynthfinder.tools package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="aizynthfinder-mcts-package">
+<h1>aizynthfinder.mcts package<a class="headerlink" href="#aizynthfinder-mcts-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-aizynthfinder.mcts.mcts">
+<span id="aizynthfinder-mcts-mcts-module"></span><h2>aizynthfinder.mcts.mcts module<a class="headerlink" href="#module-aizynthfinder.mcts.mcts" title="Permalink to this headline">¶</a></h2>
+<p>Module containing a class that holds the tree search</p>
+<dl class="py class">
+<dt id="aizynthfinder.mcts.mcts.SearchTree">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.mcts.mcts.</span></code><code class="sig-name descname"><span class="pre">SearchTree</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_smiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulation of the search tree.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root</strong> – the root node</p></li>
+<li><p><a class="reference internal" href="aizynthfinder.context.html#module-aizynthfinder.context.config" title="aizynthfinder.context.config"><strong>config</strong></a> – the configuration of the search tree</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>config</strong> – settings of the tree search algorithm</p></li>
+<li><p><strong>root_smiles</strong> – the root will be set to a node representing this molecule, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.from_json">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new search tree by deserialization from a JSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – the path to the JSON node</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="aizynthfinder.context.html#aizynthfinder.context.config.Configuration" title="aizynthfinder.context.config.Configuration"><em>Configuration</em></a>) – the configuration of the search</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a deserialized tree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.mcts.mcts.SearchTree" title="aizynthfinder.mcts.mcts.SearchTree">SearchTree</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.backpropagate">
+<code class="sig-name descname"><span class="pre">backpropagate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_estimate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.backpropagate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backpropagate the value estimate and update all nodes from a
+given node all the way to the root.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>from_node</strong> (<a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node"><em>aizynthfinder.mcts.node.Node</em></a>) – the end node of the route to update</p></li>
+<li><p><strong>value_estimate</strong> (<em>float</em>) – The score value to backpropagate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.graph">
+<code class="sig-name descname"><span class="pre">graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recreate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a directed graph object with the nodes as
+vertices and the actions as edges attribute “action”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>recreate</strong> (<em>bool</em>) – if True will construct the graph even though it is cached, defaults to False</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the graph object</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – if the tree is not defined</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>networkx.classes.digraph.DiGraph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.one_iteration">
+<code class="sig-name descname"><span class="pre">one_iteration</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.one_iteration" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Perform one iteration of</dt><dd><ol class="arabic simple">
+<li><p>Selection</p></li>
+<li><p>Expansion</p></li>
+<li><p>Rollout</p></li>
+<li><p>Backpropagation</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>if a solution was found</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.select_leaf">
+<code class="sig-name descname"><span class="pre">select_leaf</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.select_leaf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traverse the tree selecting the most promising child at
+each step until leaf node returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the leaf node</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if the tree is not defined</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node">aizynthfinder.mcts.node.Node</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.serialize">
+<code class="sig-name descname"><span class="pre">serialize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the search tree to a JSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – the path to the JSON file</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if the tree is not defined</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.mcts.SearchTree.route_to_node">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">route_to_node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.mcts.SearchTree.route_to_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the route to a give node to the root.</p>
+<p>Will return both the actions taken to go between the nodes,
+and the nodes in the route themselves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>from_node</strong> (<a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node"><em>Node</em></a>) – the end of the route</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the route</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[List[<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.RetroReaction" title="aizynthfinder.chem.RetroReaction">RetroReaction</a>], List[<a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node">Node</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.mcts.node">
+<span id="aizynthfinder-mcts-node-module"></span><h2>aizynthfinder.mcts.node module<a class="headerlink" href="#module-aizynthfinder.mcts.node" title="Permalink to this headline">¶</a></h2>
+<p>Module containing a class that represents a node in the search tree.</p>
+<dl class="py exception">
+<dt id="aizynthfinder.mcts.node.NodeUnexpectedBehaviourException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.mcts.node.</span></code><code class="sig-name descname"><span class="pre">NodeUnexpectedBehaviourException</span></code><a class="headerlink" href="#aizynthfinder.mcts.node.NodeUnexpectedBehaviourException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception that is raised if the tree search is behaving unexpectedly.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.mcts.node.Node">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.mcts.node.</span></code><code class="sig-name descname"><span class="pre">Node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A node in the search tree.</p>
+<p>The children are instantiated lazily for efficiency: only when
+a child is selected the reaction to create that child is applied.</p>
+<p>Properties of an instantiated children to a node can be access with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">children_attr</span> <span class="o">=</span> <span class="n">node</span><span class="p">[</span><span class="n">child</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>the return value is a dictionary with keys “action”, “value”, “prior”
+and “visitations”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>is_expanded</strong> – if the node has had children added to it</p></li>
+<li><p><strong>is_expandable</strong> – if the node is expandable</p></li>
+<li><p><strong>parent</strong> – the parent node</p></li>
+<li><p><a class="reference internal" href="#module-aizynthfinder.mcts.state" title="aizynthfinder.mcts.state"><strong>state</strong></a> – the internal state of the node</p></li>
+<li><p><strong>tree</strong> – the tree owning this node</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>state</strong> – the state of the node</p></li>
+<li><p><strong>owner</strong> – the tree that owns this node</p></li>
+<li><p><strong>config</strong> – settings of the tree search algorithm</p></li>
+<li><p><strong>parent</strong> – the parent node, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.create_root">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create_root</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.create_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a root node for a tree using a SMILES.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>smiles</strong> (<em>str</em>) – the SMILES representation of the root state</p></li>
+<li><p><strong>tree</strong> (<a class="reference internal" href="#aizynthfinder.mcts.mcts.SearchTree" title="aizynthfinder.mcts.mcts.SearchTree"><em>SearchTree</em></a>) – the search tree</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="aizynthfinder.context.html#aizynthfinder.context.config.Configuration" title="aizynthfinder.context.config.Configuration"><em>Configuration</em></a>) – settings of the tree search algorithm</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the created node</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node">Node</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.from_dict">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molecules</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new node from a dictionary, i.e. deserialization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict</strong> – the serialized node</p></li>
+<li><p><strong>tree</strong> (<a class="reference internal" href="#aizynthfinder.mcts.mcts.SearchTree" title="aizynthfinder.mcts.mcts.SearchTree"><em>SearchTree</em></a>) – the search tree</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="aizynthfinder.context.html#aizynthfinder.context.config.Configuration" title="aizynthfinder.context.config.Configuration"><em>Configuration</em></a>) – settings of the tree search algorithm</p></li>
+<li><p><strong>molecules</strong> (<a class="reference internal" href="aizynthfinder.utils.html#aizynthfinder.utils.serialization.MoleculeDeserializer" title="aizynthfinder.utils.serialization.MoleculeDeserializer"><em>MoleculeDeserializer</em></a>) – the deserialized molecules</p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node"><em>Node</em></a>) – the parent node</p></li>
+<li><p><strong>dict_</strong> (<em>StrDict</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a deserialized node</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node">Node</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.backpropagate">
+<code class="sig-name descname"><span class="pre">backpropagate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_estimate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.backpropagate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the number of visitations of a particular child and its value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="#aizynthfinder.mcts.node.Node" title="aizynthfinder.mcts.node.Node"><em>Node</em></a>) – the child node</p></li>
+<li><p><strong>value_estimate</strong> (<em>float</em>) – the value to add to the child value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.children">
+<code class="sig-name descname"><span class="pre">children</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all of the instantiated children</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the children</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[‘Node’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.children_view">
+<code class="sig-name descname"><span class="pre">children_view</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.children_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a view of the children attributes. Each of the
+list returned is a new list, although the actual children
+are not copied.</p>
+<p>The return dictionary will have keys “actions”, “values”,
+“priors”, “visitations” and “objects”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the view</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>StrDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.expand">
+<code class="sig-name descname"><span class="pre">expand</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the node.</p>
+<p>Expansion is the process of creating the children of the node,
+without instantiating a child object. The actions and priors are
+taken from the policy network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.is_terminal">
+<code class="sig-name descname"><span class="pre">is_terminal</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.is_terminal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node is terminal if its unexpandable, or the internal state is terminal (solved)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the terminal attribute of the node</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.promising_child">
+<code class="sig-name descname"><span class="pre">promising_child</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.promising_child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the child with the currently highest Q+U</p>
+<p>The selected child will be instantiated if it has not been already.</p>
+<p>If no actions could be found that were applicable, the method will
+return None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the child</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Optional[‘Node’]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.node.Node.serialize">
+<code class="sig-name descname"><span class="pre">serialize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molecule_store</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.node.Node.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the node object to a dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>molecule_store</strong> (<a class="reference internal" href="aizynthfinder.utils.html#aizynthfinder.utils.serialization.MoleculeSerializer" title="aizynthfinder.utils.serialization.MoleculeSerializer"><em>MoleculeSerializer</em></a>) – the serialized molecules</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the serialized node</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>StrDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.mcts.state">
+<span id="aizynthfinder-mcts-state-module"></span><h2>aizynthfinder.mcts.state module<a class="headerlink" href="#module-aizynthfinder.mcts.state" title="Permalink to this headline">¶</a></h2>
+<p>Module contain a class that encapsulate the state of search tree node.</p>
+<dl class="py class">
+<dt id="aizynthfinder.mcts.state.State">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.mcts.state.</span></code><code class="sig-name descname"><span class="pre">State</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.state.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulation of the molecular state of a node.</p>
+<p>A state consists of an immutable list of molecules that are either solved
+(can be found in stock) or that potentially can be expanded to new molecules
+by applying a reaction on them.</p>
+<p>The class is hashable and comparable by the inchi keys of all the molecules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mols</strong> – the list of molecules</p></li>
+<li><p><strong>expandable_mols</strong> – the list of molecules not in stock</p></li>
+<li><p><a class="reference internal" href="aizynthfinder.context.html#aizynthfinder.context.config.Configuration.stock" title="aizynthfinder.context.config.Configuration.stock"><strong>stock</strong></a> – the configured stock</p></li>
+<li><p><strong>in_stock_list</strong> – for each molecule if they are in stock</p></li>
+<li><p><strong>is_solved</strong> – is true if all molecules are in stock:</p></li>
+<li><p><a class="reference internal" href="aizynthfinder.context.html#aizynthfinder.context.config.Configuration.max_transforms" title="aizynthfinder.context.config.Configuration.max_transforms"><strong>max_transforms</strong></a> – the maximum of the transforms of the molecule</p></li>
+<li><p><a class="reference internal" href="#aizynthfinder.mcts.node.Node.is_terminal" title="aizynthfinder.mcts.node.Node.is_terminal"><strong>is_terminal</strong></a> – is true if the all molecules are in stock or if the maximum transforms has been reached</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>mols</strong> – the molecules of the state</p></li>
+<li><p><strong>config</strong> – settings of the tree search algorithm</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.mcts.state.State.from_dict">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molecules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.state.State.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new state from a dictionary, i.e. deserialization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict</strong> (<em>dict</em>) – the serialized state</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="aizynthfinder.context.html#aizynthfinder.context.config.Configuration" title="aizynthfinder.context.config.Configuration"><em>Configuration</em></a>) – settings of the tree search algorithm</p></li>
+<li><p><strong>molecules</strong> (<a class="reference internal" href="aizynthfinder.utils.html#aizynthfinder.utils.serialization.MoleculeDeserializer" title="aizynthfinder.utils.serialization.MoleculeDeserializer"><em>MoleculeDeserializer</em></a>) – the deserialized molecules</p></li>
+<li><p><strong>dict_</strong> (<em>StrDict</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a deserialized state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.mcts.state.State" title="aizynthfinder.mcts.state.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.state.State.score">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">score</span></code><a class="headerlink" href="#aizynthfinder.mcts.state.State.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the score of the state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the score</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.state.State.stock_availability">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">stock_availability</span></code><a class="headerlink" href="#aizynthfinder.mcts.state.State.stock_availability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of availabilities for all molecules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the list</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.state.State.serialize">
+<code class="sig-name descname"><span class="pre">serialize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molecule_store</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.state.State.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize the state object to a dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>molecule_store</strong> (<em>MolecularSerializer</em>) – the serialized molecules</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the serialized state</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.mcts.state.State.to_image">
+<code class="sig-name descname"><span class="pre">to_image</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ncolumns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.mcts.state.State.to_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an image representation of the state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ncolumns</strong> (<em>int</em><em>, </em><em>optional</em>) – number of molecules per row, defaults to 6</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the image representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>a PIL image</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.mcts">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-aizynthfinder.mcts" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Molecular AI group.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/aizynthfinder.mcts.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,1283 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aizynthfinder.context package &#8212; aizynthfinder 2.6.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aizynthfinder.interfaces package" href="aizynthfinder.interfaces.html" />
+    <link rel="prev" title="aizynthfinder package" href="aizynthfinder.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">aizynthfinder</a></h1>
+
+
+
+<p class="blurb">A fast, robust and flexible software for retrosynthetic planning</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Graphical user interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_interface.html">Python interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stocks.html">Stocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scoring.html">Scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="training.html">Training</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="aizynthfinder.html">aizynthfinder package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="aizynthfinder.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">aizynthfinder.context package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context.collection">aizynthfinder.context.collection module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context.config">aizynthfinder.context.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context.cost">aizynthfinder.context.cost module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context.policy">aizynthfinder.context.policy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context.scoring">aizynthfinder.context.scoring module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context.stock">aizynthfinder.context.stock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-aizynthfinder.context">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.interfaces.html">aizynthfinder.interfaces package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.mcts.html">aizynthfinder.mcts package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.tools.html">aizynthfinder.tools package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.training.html">aizynthfinder.training package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aizynthfinder.utils.html">aizynthfinder.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.aizynthfinder">aizynthfinder.aizynthfinder module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.analysis">aizynthfinder.analysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.chem">aizynthfinder.chem module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder.reactiontree">aizynthfinder.reactiontree module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aizynthfinder.html#module-aizynthfinder">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sequences.html">Sequences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relationships.html">Relationships</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="aizynthfinder.html">aizynthfinder package</a><ul>
+      <li>Previous: <a href="aizynthfinder.html" title="previous chapter">aizynthfinder package</a></li>
+      <li>Next: <a href="aizynthfinder.interfaces.html" title="next chapter">aizynthfinder.interfaces package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="aizynthfinder-context-package">
+<h1>aizynthfinder.context package<a class="headerlink" href="#aizynthfinder-context-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-aizynthfinder.context.collection">
+<span id="aizynthfinder-context-collection-module"></span><h2>aizynthfinder.context.collection module<a class="headerlink" href="#module-aizynthfinder.context.collection" title="Permalink to this headline">¶</a></h2>
+<p>Module containing a class that is the base class for all collection classes (stock, policies, scorers)</p>
+<dl class="py class">
+<dt id="aizynthfinder.context.collection.ContextCollection">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.collection.</span></code><code class="sig-name descname"><span class="pre">ContextCollection</span></code><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for a collection of items
+that can be loaded and then (de-)selected.</p>
+<blockquote>
+<div><p>One can obtain individual items with:</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">an_item</span> <span class="o">=</span> <span class="n">collection</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And delete items with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">collection</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.items">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">items</span></code><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>The available item keys</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.selection">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">selection</span></code><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>The keys of the selected item(s)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.deselect">
+<code class="sig-name descname"><span class="pre">deselect</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.deselect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deselect one or all items</p>
+<p>If no key is passed, all items will be deselected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – the key of the item to deselect, defaults to None</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if the key is not among the selected ones</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.load">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load an item. Needs to be implemented by a sub-class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>_</strong> (<em>Any</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.load_from_config">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">load_from_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.load_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load items from a configuration. Needs to be implemented by a sub-class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>Any</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.select">
+<code class="sig-name descname"><span class="pre">select</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select one or more items.</p>
+<p>If this is a single selection collection, only a single value is accepted.
+If this is a multiple selection collection it will overwrite the selection completely,
+unless <code class="docutils literal notranslate"><span class="pre">append</span></code> is True and a single key is given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the key or keys of the item(s) to select</p></li>
+<li><p><strong>append</strong> (<em>bool</em>) – if True will append single keys to existing selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – if this a single collection and value is multiple keys</p></li>
+<li><p><strong>KeyError</strong> – if at least one of the keys are not corresponding to a loaded item</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.select_all">
+<code class="sig-name descname"><span class="pre">select_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.select_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select all loaded items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.select_first">
+<code class="sig-name descname"><span class="pre">select_first</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.select_first" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the first loaded item</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.collection.ContextCollection.select_last">
+<code class="sig-name descname"><span class="pre">select_last</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.collection.ContextCollection.select_last" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the last loaded item</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.context.config">
+<span id="aizynthfinder-context-config-module"></span><h2>aizynthfinder.context.config module<a class="headerlink" href="#module-aizynthfinder.context.config" title="Permalink to this headline">¶</a></h2>
+<p>Module containing a class for encapsulating the settings of the tree search</p>
+<dl class="py class">
+<dt id="aizynthfinder.context.config.Configuration">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.config.</span></code><code class="sig-name descname"><span class="pre">Configuration</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_cumulative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.995</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_transforms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_prior</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_prior</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_target_from_stock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'retro_template'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_cycles_in_search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_remote_models</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_algorithm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mcts'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expansion_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molecule_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.config.Configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulating the settings of the tree search, including the policy,
+the stock, the loaded scorers and various parameters.</p>
+<p>All the parameters can be retrieved as attributes of the Configuration
+object, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">max_transforms</span>  <span class="c1"># The maximum of transform</span>
+<span class="n">config</span><span class="o">.</span><span class="n">iteration_limit</span>  <span class="c1"># The maximum number of iterations</span>
+</pre></div>
+</div>
+<p>On instantiation it will read default parameters from a config.yml
+file located in the <cite>data</cite> folder of the package.</p>
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.C">
+<code class="sig-name descname"><span class="pre">C</span></code><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">1.4</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.C" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.cutoff_cumulative">
+<code class="sig-name descname"><span class="pre">cutoff_cumulative</span></code><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0.995</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.cutoff_cumulative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.cutoff_number">
+<code class="sig-name descname"><span class="pre">cutoff_number</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">50</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.cutoff_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.max_transforms">
+<code class="sig-name descname"><span class="pre">max_transforms</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.max_transforms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.default_prior">
+<code class="sig-name descname"><span class="pre">default_prior</span></code><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0.5</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.default_prior" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.use_prior">
+<code class="sig-name descname"><span class="pre">use_prior</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.use_prior" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.iteration_limit">
+<code class="sig-name descname"><span class="pre">iteration_limit</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">100</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.iteration_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.return_first">
+<code class="sig-name descname"><span class="pre">return_first</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.return_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.time_limit">
+<code class="sig-name descname"><span class="pre">time_limit</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">120</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.time_limit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.filter_cutoff">
+<code class="sig-name descname"><span class="pre">filter_cutoff</span></code><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><em class="property"> <span class="pre">=</span> <span class="pre">0.05</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.filter_cutoff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.exclude_target_from_stock">
+<code class="sig-name descname"><span class="pre">exclude_target_from_stock</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.exclude_target_from_stock" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.template_column">
+<code class="sig-name descname"><span class="pre">template_column</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'retro_template'</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.template_column" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.prune_cycles_in_search">
+<code class="sig-name descname"><span class="pre">prune_cycles_in_search</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.prune_cycles_in_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.use_remote_models">
+<code class="sig-name descname"><span class="pre">use_remote_models</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.use_remote_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.search_algorithm">
+<code class="sig-name descname"><span class="pre">search_algorithm</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'mcts'</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.search_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.stock">
+<code class="sig-name descname"><span class="pre">stock</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#aizynthfinder.context.stock.Stock" title="aizynthfinder.context.stock.Stock"><span class="pre">aizynthfinder.context.stock.Stock</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.stock" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.expansion_policy">
+<code class="sig-name descname"><span class="pre">expansion_policy</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#aizynthfinder.context.policy.ExpansionPolicy" title="aizynthfinder.context.policy.ExpansionPolicy"><span class="pre">aizynthfinder.context.policy.ExpansionPolicy</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.expansion_policy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.filter_policy">
+<code class="sig-name descname"><span class="pre">filter_policy</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#aizynthfinder.context.policy.FilterPolicy" title="aizynthfinder.context.policy.FilterPolicy"><span class="pre">aizynthfinder.context.policy.FilterPolicy</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.filter_policy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.scorers">
+<code class="sig-name descname"><span class="pre">scorers</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#aizynthfinder.context.scoring.ScorerCollection" title="aizynthfinder.context.scoring.ScorerCollection"><span class="pre">aizynthfinder.context.scoring.ScorerCollection</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.scorers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="aizynthfinder.context.config.Configuration.molecule_cost">
+<code class="sig-name descname"><span class="pre">molecule_cost</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#aizynthfinder.context.cost.MoleculeCost" title="aizynthfinder.context.cost.MoleculeCost"><span class="pre">aizynthfinder.context.cost.MoleculeCost</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#aizynthfinder.context.config.Configuration.molecule_cost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.config.Configuration.from_dict">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.config.Configuration.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a configuration from a dictionary structure.
+The parameters not set in the dictionary are taken from the default values.
+The policies and stocks specified are directly loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>StrDict</em>) – the dictionary source</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Configuration object with settings from the source</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.context.config.Configuration" title="aizynthfinder.context.config.Configuration">Configuration</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.config.Configuration.from_file">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.config.Configuration.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a configuration from a yaml file.
+The parameters not set in the yaml file are taken from the default values.
+The policies and stocks specified in the yaml file are directly loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – the path to a yaml file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Configuration object with settings from the yaml file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.context.config.Configuration" title="aizynthfinder.context.config.Configuration">Configuration</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.config.Configuration.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.config.Configuration.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the configuration using dictionary of parameters</p>
+<p>If a value is None that setting is ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>settings</strong> (<em>Any</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.context.cost">
+<span id="aizynthfinder-context-cost-module"></span><h2>aizynthfinder.context.cost module<a class="headerlink" href="#module-aizynthfinder.context.cost" title="Permalink to this headline">¶</a></h2>
+<p>Module containing classes to compute the molecule cost in some search algorithms</p>
+<dl class="py exception">
+<dt id="aizynthfinder.context.cost.CostException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.cost.</span></code><code class="sig-name descname"><span class="pre">CostException</span></code><a class="headerlink" href="#aizynthfinder.context.cost.CostException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised by classes in this module</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.cost.ZeroCost">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.cost.</span></code><code class="sig-name descname"><span class="pre">ZeroCost</span></code><a class="headerlink" href="#aizynthfinder.context.cost.ZeroCost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Encapsulation of a Zero cost model</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.cost.MoleculeCost">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.cost.</span></code><code class="sig-name descname"><span class="pre">MoleculeCost</span></code><a class="headerlink" href="#aizynthfinder.context.cost.MoleculeCost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.collection.ContextCollection" title="aizynthfinder.context.collection.ContextCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.collection.ContextCollection</span></code></a></p>
+<p>Collection of molecular cost objects</p>
+<dl class="py method">
+<dt id="aizynthfinder.context.cost.MoleculeCost.load">
+<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cost</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.cost.MoleculeCost.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a molecule cost under the given key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cost</strong> (<em>Any</em>) – A molecule cost object that can be called</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.cost.MoleculeCost.load_from_config">
+<code class="sig-name descname"><span class="pre">load_from_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">costs_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.cost.MoleculeCost.load_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load one or more cost models from a configuration</p>
+<dl class="simple">
+<dt>The format should be:</dt><dd><p>key: config_for_model</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>key value pairs</em>) – the configuration</p></li>
+<li><p><strong>costs_config</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.context.policy">
+<span id="aizynthfinder-context-policy-module"></span><h2>aizynthfinder.context.policy module<a class="headerlink" href="#module-aizynthfinder.context.policy" title="Permalink to this headline">¶</a></h2>
+<p>Module containing classes that interfaces neural network policies</p>
+<dl class="py exception">
+<dt id="aizynthfinder.context.policy.PolicyException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.policy.</span></code><code class="sig-name descname"><span class="pre">PolicyException</span></code><a class="headerlink" href="#aizynthfinder.context.policy.PolicyException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>An exception raised by the Policy classes</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.policy.ExpansionPolicy">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.policy.</span></code><code class="sig-name descname"><span class="pre">ExpansionPolicy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.ExpansionPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.collection.ContextCollection" title="aizynthfinder.context.collection.ContextCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.collection.ContextCollection</span></code></a></p>
+<p>An abstraction of an expansion policy.</p>
+<p>This policy provides actions (templates) that can be applied to a molecule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – the configuration of the tree search</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.ExpansionPolicy.get_actions">
+<code class="sig-name descname"><span class="pre">get_actions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molecules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.ExpansionPolicy.get_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the probable actions of a set of molecules, using the selected policies and given cutoffs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>molecules</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.TreeMolecule" title="aizynthfinder.chem.TreeMolecule"><em>TreeMolecule</em></a><em>]</em>) – the molecules to consider</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the actions and the priors of those actions</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>PolicyException: if the policy isn’t selected</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[List[<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.RetroReaction" title="aizynthfinder.chem.RetroReaction">RetroReaction</a>], List[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.ExpansionPolicy.load">
+<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">templatefile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.ExpansionPolicy.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a policy and associated templates under the given key</p>
+<p>If <cite>source</cite> is a string, it is taken as a path to a filename and the
+policy is loaded as an <cite>LocalKerasModel</cite> object.</p>
+<p>If <cite>source</cite> is not a string, it is taken as a custom object that
+implements the <cite>__len__</cite> and <cite>predict</cite> methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – the source of the policy model</p></li>
+<li><p><strong>templatefile</strong> (<em>str</em>) – the path to a HDF5 file with the templates</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – the key or label</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.policy.PolicyException" title="aizynthfinder.context.policy.PolicyException"><strong>PolicyException</strong></a> – if the length of the model output vector is not same as the number of templates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.ExpansionPolicy.load_from_config">
+<code class="sig-name descname"><span class="pre">load_from_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.ExpansionPolicy.load_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load one or more expansion policy from a configuration</p>
+<p>The format should be
+key:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>path_to_model</p></li>
+<li><p>path_to_templates</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>Any</em>) – the configuration</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.policy.FilterPolicy">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.policy.</span></code><code class="sig-name descname"><span class="pre">FilterPolicy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.FilterPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.collection.ContextCollection" title="aizynthfinder.context.collection.ContextCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.collection.ContextCollection</span></code></a></p>
+<p>An abstraction of a filter policy.</p>
+<p>This policy provides a query on a reaction to determine whether it is feasible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – the configuration of the tree search</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.FilterPolicy.feasibility">
+<code class="sig-name descname"><span class="pre">feasibility</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reaction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.FilterPolicy.feasibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes if a given reaction is feasible by given
+the reaction fingerprint to a network model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reaction</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.RetroReaction" title="aizynthfinder.chem.RetroReaction"><em>RetroReaction</em></a>) – the reaction to query</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the reaction is feasible</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>PolicyException: if the policy isn’t selected</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[bool, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.FilterPolicy.is_feasible">
+<code class="sig-name descname"><span class="pre">is_feasible</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reaction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.FilterPolicy.is_feasible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes if a given reaction is feasible by given
+the reaction fingerprint to a network model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reaction</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.RetroReaction" title="aizynthfinder.chem.RetroReaction"><em>aizynthfinder.chem.RetroReaction</em></a>) – the reaction to query</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the reaction is feasible</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>PolicyException: if the policy isn’t selected</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.FilterPolicy.load">
+<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.FilterPolicy.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a policy under the given key</p>
+<p>If <cite>source</cite> is a string, it is taken as a path to a filename and the
+policy is loaded as an <cite>LocalKerasModel</cite> object.</p>
+<p>If <cite>source</cite> is not a string, it is taken as a custom object that
+implements the <cite>__len__</cite> and <cite>predict</cite> methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – the source of the policy model</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – the key or label</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.policy.FilterPolicy.load_from_config">
+<code class="sig-name descname"><span class="pre">load_from_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.policy.FilterPolicy.load_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load one or more filter policy from a configuration</p>
+<dl class="simple">
+<dt>The format should be:</dt><dd><p>key: path_to_model</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>Any</em>) – the configuration</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.context.scoring">
+<span id="aizynthfinder-context-scoring-module"></span><h2>aizynthfinder.context.scoring module<a class="headerlink" href="#module-aizynthfinder.context.scoring" title="Permalink to this headline">¶</a></h2>
+<p>Module containing classes used to score the reaction routes.</p>
+<dl class="py exception">
+<dt id="aizynthfinder.context.scoring.ScorerException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">ScorerException</span></code><a class="headerlink" href="#aizynthfinder.context.scoring.ScorerException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised by classes in this module</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.Scorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">Scorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.Scorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for classes that do scoring on nodes or reaction trees.</p>
+<p>The actual scoring is done be calling an instance of
+a scorer class with a <code class="docutils literal notranslate"><span class="pre">Node</span></code> or <code class="docutils literal notranslate"><span class="pre">ReactionTree</span></code> object as only argument.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scorer</span> <span class="o">=</span> <span class="n">MyScorer</span><span class="p">()</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">node1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also give a list of such objects to the scorer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scorer</span> <span class="o">=</span> <span class="n">MyScorer</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">([</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – the configuration the tree search</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.context.scoring.Scorer.sort">
+<code class="sig-name descname"><span class="pre">sort</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.Scorer.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort nodes or reaction trees in descending order based on the score</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>_Scoreables</em>) – the items to sort</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sorted items and their scores</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Tuple[_Scoreables, Sequence[float], Sequence[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.StateScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">StateScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.StateScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.Scorer</span></code></a></p>
+<p>Class for scoring nodes based on the state score</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.NumberOfReactionsScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">NumberOfReactionsScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.NumberOfReactionsScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.Scorer</span></code></a></p>
+<p>Class for scoring nodes based on the number of reaction it took to get to a node</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.NumberOfPrecursorsScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">NumberOfPrecursorsScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.NumberOfPrecursorsScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.Scorer</span></code></a></p>
+<p>Class for scoring nodes based on the number of pre-cursors in a node or route</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.NumberOfPrecursorsInStockScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">NumberOfPrecursorsInStockScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.NumberOfPrecursorsInStockScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.Scorer</span></code></a></p>
+<p>Class for scoring nodes based on the number of pre-cursors in stock a node or route</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.AverageTemplateOccurenceScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">AverageTemplateOccurenceScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.AverageTemplateOccurenceScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.Scorer</span></code></a></p>
+<p>Class for scoring the nodes based on the average occurrence of the templates used to get to a node</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.PriceSumScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">PriceSumScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">not_in_stock_multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.PriceSumScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.Scorer</span></code></a></p>
+<p>Scorer that sums the prices of all pre-cursors</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.RouteCostScorer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">RouteCostScorer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reaction_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_yield</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_cost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">not_in_stock_multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.RouteCostScorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.scoring.PriceSumScorer" title="aizynthfinder.context.scoring.PriceSumScorer"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring.PriceSumScorer</span></code></a></p>
+<p>Score based on the cost of molecules and reactions.
+From Badowski et al. Chem Sci. 2019, 10, 4640</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.scoring.ScorerCollection">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.scoring.</span></code><code class="sig-name descname"><span class="pre">ScorerCollection</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.ScorerCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.collection.ContextCollection" title="aizynthfinder.context.collection.ContextCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.collection.ContextCollection</span></code></a></p>
+<p>Store scorer objects for the aizynthfinder interface.</p>
+<p>The scorers can be obtained by name with simple indexing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scorers</span> <span class="o">=</span> <span class="n">ScorerCollection</span><span class="p">()</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">scorers</span><span class="p">[</span><span class="s1">&#39;state score&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Scorers defined in this module and that does not require any
+other argument to initialize than the <code class="docutils literal notranslate"><span class="pre">config</span></code> are auto-loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – the configuration of the tree search</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.context.scoring.ScorerCollection.load">
+<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scorer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.ScorerCollection.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a pre-initialized scorer object to the collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>scorer</strong> (<a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer"><em>aizynthfinder.context.scoring.Scorer</em></a>) – the item to add</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.scoring.ScorerCollection.load_from_config">
+<code class="sig-name descname"><span class="pre">load_from_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">scorers_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.ScorerCollection.load_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load one or several scorers from a configuration dictionary</p>
+<p>The keys are the name of scorer class. If a scorer is not
+defined in the <code class="docutils literal notranslate"><span class="pre">aizynthfinder.context.scoring</span></code> module, the module
+name can be appended, e.g. <code class="docutils literal notranslate"><span class="pre">mypackage.scoring.AwesomeScore</span></code>.</p>
+<p>The values of the configuration is passed directly to the scorer
+class along with the <code class="docutils literal notranslate"><span class="pre">config</span></code> parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aizynthfinder.context.scoring.ScorerException" title="aizynthfinder.context.scoring.ScorerException"><strong>ScorerException</strong></a> – if module or class could not be found</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>scorers_config</strong> (<em>Any</em>) – </p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.scoring.ScorerCollection.names">
+<code class="sig-name descname"><span class="pre">names</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.ScorerCollection.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the names of all the loaded scorers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.scoring.ScorerCollection.objects">
+<code class="sig-name descname"><span class="pre">objects</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.scoring.ScorerCollection.objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of all the loaded scorer objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#aizynthfinder.context.scoring.Scorer" title="aizynthfinder.context.scoring.Scorer">Scorer</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.context.stock">
+<span id="aizynthfinder-context-stock-module"></span><h2>aizynthfinder.context.stock module<a class="headerlink" href="#module-aizynthfinder.context.stock" title="Permalink to this headline">¶</a></h2>
+<p>Module containing classes that interfaces different stocks and query classes</p>
+<dl class="py exception">
+<dt id="aizynthfinder.context.stock.StockException">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.stock.</span></code><code class="sig-name descname"><span class="pre">StockException</span></code><a class="headerlink" href="#aizynthfinder.context.stock.StockException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>An exception raised by the Stock classes</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.stock.StockQueryMixin">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.stock.</span></code><code class="sig-name descname"><span class="pre">StockQueryMixin</span></code><a class="headerlink" href="#aizynthfinder.context.stock.StockQueryMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mixin class for all query classes, providing a default interface
+to some methods that might not be possible to implement for each
+query class.</p>
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.StockQueryMixin.amount">
+<code class="sig-name descname"><span class="pre">amount</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.StockQueryMixin.amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the maximum amount of the molecule in stock</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the query molecule</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.stock.StockException" title="aizynthfinder.context.stock.StockException"><strong>StockException</strong></a> – if the amount cannot be computed</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the amount</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.StockQueryMixin.availability_string">
+<code class="sig-name descname"><span class="pre">availability_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.StockQueryMixin.availability_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sources of the molecule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the query molecule</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.stock.StockException" title="aizynthfinder.context.stock.StockException"><strong>StockException</strong></a> – if the string cannot be computed</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a comma-separated list of sources</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.StockQueryMixin.cached_search">
+<code class="sig-name descname"><span class="pre">cached_search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.StockQueryMixin.cached_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the entries of the molecule in the stock and cache them
+if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the query molecule</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the molecule is in stock</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.StockQueryMixin.clear_cache">
+<code class="sig-name descname"><span class="pre">clear_cache</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.StockQueryMixin.clear_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the internal search cache if available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.StockQueryMixin.price">
+<code class="sig-name descname"><span class="pre">price</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.StockQueryMixin.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimum price of the molecule in stock</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the query molecule</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.stock.StockException" title="aizynthfinder.context.stock.StockException"><strong>StockException</strong></a> – if the price cannot be computed</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.stock.InMemoryInchiKeyQuery">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.stock.</span></code><code class="sig-name descname"><span class="pre">InMemoryInchiKeyQuery</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.InMemoryInchiKeyQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.stock.StockQueryMixin" title="aizynthfinder.context.stock.StockQueryMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.stock.StockQueryMixin</span></code></a></p>
+<p>A stock query class that is based on an in-memory list
+of pre-computed inchi-keys.</p>
+<dl class="simple">
+<dt>This list can be instantiated from</dt><dd><ul class="simple">
+<li><p>A Pandas dataframe in HDF5 or CSV format</p></li>
+<li><p>A text file with an inchi key on each row</p></li>
+</ul>
+</dd>
+</dl>
+<p>The pandas dataframe must have a column “inchi_key” with InChIkeys.
+The HDF5 file must have a dataset called “table”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – the path to the file with inchi-keys</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.InMemoryInchiKeyQuery.stock_inchikeys">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">stock_inchikeys</span></code><a class="headerlink" href="#aizynthfinder.context.stock.InMemoryInchiKeyQuery.stock_inchikeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the InChiKeys in this stock</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.stock.MongoDbInchiKeyQuery">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.stock.</span></code><code class="sig-name descname"><span class="pre">MongoDbInchiKeyQuery</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stock_db'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'molecules'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.MongoDbInchiKeyQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.stock.StockQueryMixin" title="aizynthfinder.context.stock.StockQueryMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.stock.StockQueryMixin</span></code></a></p>
+<p>A stock query class that is looking up inchi keys in a Mongo database.</p>
+<dl class="simple">
+<dt>The documents in the database collection should have at least 2 fields:</dt><dd><ul class="simple">
+<li><p>inchi_key: the inchi key of the molecule</p></li>
+<li><p>source: the original source of the molecule</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – the Mongo client</p></li>
+<li><p><strong>database</strong> – the database instance</p></li>
+<li><p><a class="reference internal" href="aizynthfinder.html#aizynthfinder.reactiontree.ReactionTree.molecules" title="aizynthfinder.reactiontree.ReactionTree.molecules"><strong>molecules</strong></a> – the collection of documents</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>host</strong> – the database host, defaults to None</p></li>
+<li><p><strong>database</strong> – the database name, defaults to “stock_db”</p></li>
+<li><p><strong>collection</strong> – the database collection, defaults to “molecules”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.MongoDbInchiKeyQuery.availability_string">
+<code class="sig-name descname"><span class="pre">availability_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.MongoDbInchiKeyQuery.availability_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sources of the molecule</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the query molecule</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.stock.StockException" title="aizynthfinder.context.stock.StockException"><strong>StockException</strong></a> – if the string cannot be computed</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a comma-separated list of sources</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="aizynthfinder.context.stock.Stock">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">aizynthfinder.context.stock.</span></code><code class="sig-name descname"><span class="pre">Stock</span></code><a class="headerlink" href="#aizynthfinder.context.stock.Stock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#aizynthfinder.context.collection.ContextCollection" title="aizynthfinder.context.collection.ContextCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">aizynthfinder.context.collection.ContextCollection</span></code></a></p>
+<p>A collection of molecules that are in stock</p>
+<p>A molecule can be queried on the stock with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_mol</span> <span class="o">=</span> <span class="n">Molecule</span><span class="p">(</span><span class="n">smiles</span><span class="o">=</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+<span class="n">my_mol</span> <span class="ow">in</span> <span class="n">stock</span>
+</pre></div>
+</div>
+<p>One can obtain individual stocks with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sub_stock</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>One can obtain the number of molecules in the selected stock with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_molecules</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.stop_criteria">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">stop_criteria</span></code><a class="headerlink" href="#aizynthfinder.context.stock.Stock.stop_criteria" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of the stop criteria used by the stock</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.amount">
+<code class="sig-name descname"><span class="pre">amount</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the maximum amount of a molecule in stock</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the molecule to query</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.stock.StockException" title="aizynthfinder.context.stock.StockException"><strong>StockException</strong></a> – if the amount could not be computed</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the maximum amount</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.availability_string">
+<code class="sig-name descname"><span class="pre">availability_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.availability_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string of what stocks a given mol is available</p>
+<p>If the molecule is not in stock it will return “Not in stock”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – The molecule to query</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>string with a list of stocks that mol was found in</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.exclude">
+<code class="sig-name descname"><span class="pre">exclude</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.exclude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exclude a molecule from the stock.
+When this molecule is queried it will return False,
+regardless if the molecule is in the stock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the molecule to exclude</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.load">
+<code class="sig-name descname"><span class="pre">load</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a stock.</p>
+<p>If <cite>source</cite> is a string, it is taken as a path to a filename and the
+stock is loaded as an <cite>InMemoryInchiKeyQuery</cite> object.</p>
+<p>If <cite>source</cite> is not a string, it is taken as a custom object that
+implements the <cite>__contains__</cite> and <cite>__len__</cite> methods for querying.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – the source of the sock</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – The key that will be used to select the stock</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.load_from_config">
+<code class="sig-name descname"><span class="pre">load_from_config</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.load_from_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load stocks from a configuration</p>
+<p>The key can be “files” in case stocks are loaded from a file
+The key can be “mongodb” in case a <code class="docutils literal notranslate"><span class="pre">MongoDbInchiKeyQuery</span></code> object is instantiated
+The key can be “stop_criteria” in case the config is given to the <cite>set_stop_criteria</cite> method
+The key can point to a custom stock class, e.g. <code class="docutils literal notranslate"><span class="pre">mypackage.mymodule.MyStock</span></code>
+in case this stock object is instantiated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>Any</em>) – the configuration</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.price">
+<code class="sig-name descname"><span class="pre">price</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the minimum price of a molecule in stock</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mol</strong> (<a class="reference internal" href="aizynthfinder.html#aizynthfinder.chem.Molecule" title="aizynthfinder.chem.Molecule"><em>aizynthfinder.chem.Molecule</em></a>) – the molecule to query</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#aizynthfinder.context.stock.StockException" title="aizynthfinder.context.stock.StockException"><strong>StockException</strong></a> – if the price could not be computed</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the minimum price</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.reset_exclusion_list">
+<code class="sig-name descname"><span class="pre">reset_exclusion_list</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.reset_exclusion_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all molecules in the exclusion list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.select">
+<code class="sig-name descname"><span class="pre">select</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.select" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select one or more stock queries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the key of the stocks to select</p></li>
+<li><p><strong>append</strong> (<em>bool</em>) – if True and <code class="docutils literal notranslate"><span class="pre">value</span></code> is a single key append it to the current selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.set_stop_criteria">
+<code class="sig-name descname"><span class="pre">set_stop_criteria</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criteria</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.set_stop_criteria" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set criteria that stop the search</p>
+<p>The keys of the criteria can be “price” or “amount” which accepts numerical settings,
+or “counts” that should be dictionary of maximum allowed count for each atomic symbol.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">criteria</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;counts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mi">4</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>criteria</strong> (<em>Optional</em><em>[</em><em>dict</em><em>]</em>) – the criteria settings</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aizynthfinder.context.stock.Stock.smiles_in_stock">
+<code class="sig-name descname"><span class="pre">smiles_in_stock</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smiles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aizynthfinder.context.stock.Stock.smiles_in_stock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the SMILES is in the currently selected stocks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>smiles</strong> (<em>str</em>) – SMILES string (must be RDKit sanitizable)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>if the SMILES was on stock</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-aizynthfinder.context">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-aizynthfinder.context" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Molecular AI group.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/aizynthfinder.context.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
